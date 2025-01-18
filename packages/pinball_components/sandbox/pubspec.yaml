@@ -1,0 +1,29 @@
+name: sandbox
+description: A sanbox application where components are showcased and developed in an isolated way
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: "^3.4.1"
+
+dependencies:
+  dashbook: ^0.1.7
+  flame: ^1.18.0
+  flame_bloc: ^1.12.0
+  flame_forge2d: ^0.18.1
+  flutter:
+    sdk: flutter
+  pinball_components:
+    path: ../
+  pinball_flame:
+    path: ../../pinball_flame
+  pinball_theme:
+    path: ../../pinball_theme
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^2.4.0
+
+flutter:
+  uses-material-design: true

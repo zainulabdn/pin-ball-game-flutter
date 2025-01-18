@@ -1,0 +1,13 @@
+name: share_repository
+description: Repository to facilitate sharing scores.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: "^3.4.3"
+
+dev_dependencies:
+  coverage: ^1.1.0
+  mocktail: ^1.0.4
+  test: ^1.25.2
+  very_good_analysis: ^6.0.0

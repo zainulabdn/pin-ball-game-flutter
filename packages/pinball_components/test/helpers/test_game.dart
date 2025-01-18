@@ -1,0 +1,26 @@
+import 'package:flame/events.dart';
+import 'package:flame_forge2d/flame_forge2d.dart';
+
+class TestGame extends Forge2DGame {
+  TestGame([List<String>? assets]) : _assets = assets {
+    images.prefix = '';
+  }
+
+  final List<String>? _assets;
+
+  @override
+  Future<void> onLoad() async {
+    if (_assets != null) {
+      await images.loadAll(_assets);
+    }
+    await super.onLoad();
+  }
+}
+
+class KeyboardTestGame extends TestGame with HasKeyboardHandlerComponents {
+  KeyboardTestGame([List<String>? assets]) : super(assets);
+}
+
+class TappablesTestGame extends TestGame with TapCallbacks {
+  TappablesTestGame([List<String>? assets]) : super(assets);
+}
