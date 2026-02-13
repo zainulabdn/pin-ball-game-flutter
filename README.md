@@ -1,161 +1,177 @@
-# I/O Pinball
+# 🎮 I/O Pinball – Flutter + Firebase Web Game
 
-[![Pinball Header][logo]][pinball_link]
+A modern **Pinball web game built with Flutter and Firebase** for **Google I/O 2022**.
 
-[![io_pinball][build_status_badge]][workflow_link]
-![coverage][coverage_badge]
-[![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
-[![License: MIT][license_badge]][license_link]
+Developed using production-grade architecture, real-time backend services, and Flutter Web rendering, this project demonstrates how to build a **high-performance browser-based game using Flutter**.
 
-A Pinball game built with [Flutter][flutter_link] and [Firebase][firebase_link] for [Google I/O 2022][google_io_link].
+👉 **Play Now:** [https://pinball.flutter.dev](https://pinball.flutter.dev)
+📖 **Technical Deep Dive:** [https://medium.com/flutter/i-o-pinball-powered-by-flutter-and-firebase-d22423f3f5d](https://medium.com/flutter/i-o-pinball-powered-by-flutter-and-firebase-d22423f3f5d)
 
-[Try it now][pinball_link] and [learn about how it's made][blog_link].
-
-_Built by [Very Good Ventures][very_good_ventures_link] in partnership with Google_
-
-_Created using [Very Good CLI][very_good_cli_link] 🤖_
+Built by **Very Good Ventures** in partnership with **Google**
+Created using **Very Good CLI** 🤖
 
 ---
 
-## Getting Started 🚀
+## 🚀 Project Overview
 
-### Firebase
-First, please create a Firebase project for development. 
-After you create your project, remember to activate the following features:
-    - **Authentication** with the **anonymous** option
-    - **Firestore** with the rules in firestore.rules.
+**I/O Pinball** is a Flutter Web game showcasing:
 
-Next, use the instructions on [Firebase website](https://firebase.google.com/docs/flutter/setup?platform=web) to set up the **flutterfire_cli**.
+* 🎮 Interactive physics-based gameplay
+* 🌐 Cross-platform Web support (Desktop & Mobile Browsers)
+* 🔥 Firebase backend integration
+* 🧠 Clean architecture and scalable code structure
+* 🌍 Internationalization support
+* 🧪 High test coverage
 
-Allow it to override the **lib/firebase_options.dart** file with your project settings.
+This project is ideal for developers interested in:
 
-### Running locally
-To run the desired project either use the launch configuration in VSCode/Android Studio or use the following commands:
-
-```sh
-$ flutter run -d chrome
-```
-
-_\*I/O Pinball works on Web for desktop and mobile._
+* Flutter Web game development
+* Firebase integration in Flutter
+* Production-level Flutter architecture
+* Real-time cloud-powered applications
+* Google I/O showcase projects
 
 ---
 
-## Running Tests 🧪
+## 🛠️ Tech Stack
 
-To run all unit and widget tests use the following command:
+**Frontend / Game Engine**
 
-```sh
-$ flutter test --coverage --test-randomize-ordering-seed random
+* Flutter (Web)
+* Dart
+
+**Backend / Cloud Services**
+
+* Firebase Authentication (Anonymous)
+* Cloud Firestore
+* Firebase Hosting
+
+**Tooling**
+
+* Very Good CLI
+* very_good_analysis (linting)
+* GitHub Actions CI
+* lcov (coverage reports)
+
+---
+
+# ⚙️ Getting Started
+
+## 🔥 Firebase Setup
+
+1. Create a new Firebase project.
+2. Enable:
+
+   * **Authentication** → Anonymous Sign-In
+   * **Cloud Firestore** (apply rules from `firestore.rules`)
+3. Install and configure `flutterfire_cli`:
+   [https://firebase.google.com/docs/flutter/setup?platform=web](https://firebase.google.com/docs/flutter/setup?platform=web)
+4. Allow it to override:
+
+   ```
+   lib/firebase_options.dart
+   ```
+
+---
+
+## ▶️ Run Locally
+
+```bash
+flutter run -d chrome
 ```
 
-To view the generated coverage report you can use [lcov](https://github.com/linux-test-project/lcov).
+> I/O Pinball runs on **Flutter Web** for both desktop and mobile browsers.
 
-```sh
+---
+
+# 🧪 Running Tests
+
+Run unit and widget tests:
+
+```bash
+flutter test --coverage --test-randomize-ordering-seed random
+```
+
+Generate coverage report using lcov:
+
+```bash
 # Generate Coverage Report
-$ genhtml coverage/lcov.info -o coverage/
+genhtml coverage/lcov.info -o coverage/
+
 # Open Coverage Report
-$ open coverage/index.html
+open coverage/index.html
 ```
 
 ---
 
-## Working with Translations 🌐
+# 🌐 Internationalization (i18n)
 
-This project relies on [flutter_localizations][flutter_localizations_link] and follows the [official internationalization guide for Flutter][internationalization_link].
+This project uses `flutter_localizations` and follows Flutter’s official i18n guidelines.
 
-### Adding Strings
+## ➕ Adding Localized Strings
 
-1. To add a new localizable string, open the `app_en.arb` file at `lib/l10n/arb/app_en.arb`.
+1. Open:
 
-```arb
-{
-    "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+```
+lib/l10n/arb/app_en.arb
+```
+
+2. Add a new key with description:
+
+```json
+"helloWorld": "Hello World",
+"@helloWorld": {
+  "description": "Hello World Text"
 }
 ```
 
-2. Then add a new key/value and description
-
-```arb
-{
-    "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    },
-    "helloWorld": "Hello World",
-    "@helloWorld": {
-        "description": "Hello World Text"
-    }
-}
-```
-
-3. Use the new string
+3. Use it in your widget:
 
 ```dart
-import 'package:pinball/l10n/l10n.dart';
-
-@override
-Widget build(BuildContext context) {
-  final l10n = context.l10n;
-  return Text(l10n.helloWorld);
-}
+final l10n = context.l10n;
+Text(l10n.helloWorld);
 ```
 
-### Adding Translations
+---
 
-1. For each supported locale, add a new ARB file in `lib/l10n/arb`.
+## 🌎 Adding New Languages
+
+1. Add a new ARB file:
 
 ```
-├── l10n
-│   ├── arb
-│   │   ├── app_en.arb
-│   │   └── app_es.arb
+lib/l10n/arb/app_es.arb
 ```
 
-2. Add the translated strings to each `.arb` file:
+2. Translate strings per locale.
 
-`app_en.arb`
+---
 
-```arb
-{
-    "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
-}
-```
+# 📈 SEO Keywords (For Better GitHub Ranking)
 
-`app_es.arb`
+Add these as GitHub topics:
 
-```arb
-{
-    "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
-    }
-}
-```
+* Flutter Game
+* Flutter Web Game
+* Pinball Game Flutter
+* Firebase Flutter Example
+* Google I/O Project
+* Flutter + Firebase App
+* Dart Game Development
+* Flutter Web App Example
+* Open Source Flutter Game
+* Firebase Firestore Example
+* Cross Platform Web Game
 
-[build_status_badge]: https://github.com/flutter/pinball/actions/workflows/main.yaml/badge.svg
-[coverage_badge]: coverage_badge.svg
-[firebase_link]: https://firebase.google.com/
-[flutter_link]: https://flutter.dev
-[flutter_localizations_link]: https://api.flutter.dev/flutter/flutter_localizations/flutter_localizations-library.html
-[google_io_link]: https://events.google.com/io/
-[blog_link]: https://medium.com/flutter/i-o-pinball-powered-by-flutter-and-firebase-d22423f3f5d
-[internationalization_link]: https://flutter.dev/docs/development/accessibility-and-localization/internationalization
-[license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
-[license_link]: https://opensource.org/licenses/MIT
-[logo]: art/readme_header.png
-[pinball_link]: https://pinball.flutter.dev
-[very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
-[very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
-[very_good_cli_link]: https://github.com/VeryGoodOpenSource/very_good_cli
-[very_good_ventures_link]: https://verygood.ventures/
-[workflow_link]: https://github.com/flutter/pinball/actions/workflows/main.yaml
+---
+
+# 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome.
+Feel free to fork the repository and submit a pull request.
+
+---
+
+# 📄 License
+
+MIT License
+
